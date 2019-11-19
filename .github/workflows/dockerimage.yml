@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: ./test-build.sh ${{ matrix.NODE_VERSION }} ${{ matrix.VARIANT }}
+      run: |
+        git clone https://github.com/bats-core/bats-core.git
+        cd bats-core
+        ./install.sh /usr/local
+        ./test-build.sh ${{ matrix.NODE_VERSION }} ${{ matrix.VARIANT }}
