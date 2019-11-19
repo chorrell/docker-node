@@ -17,6 +17,8 @@ jobs:
     - name: Build the Docker image
       run: |
         git clone https://github.com/bats-core/bats-core.git
-        cd bats-core
-        sudo ./install.sh /usr/local
-        bash test-build.sh ${{ matrix.NODE_VERSION }} ${{ matrix.VARIANT }}
+        (
+          cd bats-core
+          sudo ./install.sh /usr/local
+        )
+        ./test-build.sh ${{ matrix.NODE_VERSION }} ${{ matrix.VARIANT }}
