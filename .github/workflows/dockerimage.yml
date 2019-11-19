@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+          matrix:
+            NODE_VERSION: ['8', '10', '12', '13']
+            VARIANT: ['alpine', 'buster', 'buster-slim', 'stretch', 'stretch-slim']
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      run: ./test-build.sh ${{ matrix.NODE_VERSION }} ${{ matrix.VARIANT }}
