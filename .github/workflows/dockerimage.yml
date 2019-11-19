@@ -10,7 +10,7 @@ jobs:
     strategy:
           matrix:
             NODE_VERSION: ['8', '10', '12', '13']
-            VARIANT: ['alpine', 'buster', 'buster-slim', 'stretch', 'stretch-slim']
+            VARIANT: [ 'buster', 'buster-slim', 'stretch', 'stretch-slim']
 
     steps:
     - uses: actions/checkout@v1
